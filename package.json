@@ -16,7 +16,8 @@
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "postinstall": "postinstall"
+    "postinstall": "postinstall",
+    "export-server": "node ./services/server/src/server.js -h 8080"
   },
   "postinstall": {
     "node_modules/@bryntum/demo-resources/images/favicon.png": "copy public/favicon.png"
