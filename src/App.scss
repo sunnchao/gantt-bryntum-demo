@@ -1,0 +1,8 @@
+@import '@bryntum/gantt/gantt.stockholm.css';
+// Demo styling is used for Bryntum example only. Not required for application
+@import '@bryntum/demo-resources/scss/example-vite.scss';
+
+.b-wrapper {
+    flex      : 1 1 100%;
+    flex-wrap : nowrap;
+}
