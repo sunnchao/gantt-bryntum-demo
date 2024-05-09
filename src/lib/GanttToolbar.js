@@ -48,8 +48,8 @@ export default class GanttToolbar extends Toolbar {
                         {
                             ref: "exportButton",
                             icon: "b-fa b-fa-file-export",
-                            text: "Export",
-                            tooltip: "Export to Excel",
+                            text: "导出",
+                            tooltip: "导出",
                             onAction: "up.onExportClick"
                         }
                     ]
