@@ -1,6 +1,21 @@
 import type { GanttConfig, TreeGridConfig } from '@bryntum/gantt';
+import { DateHelper } from '@bryntum/gantt';
+
 import './lib/GanttToolbar.js';
 import './lib/gantt.locale.ZhCn.js';
+
+const headerTpl = ({
+    currentPage,
+    totalPages
+}) => `
+    <img alt="Company logo" src="./resources/bryntum.svg"/>
+    <dl>
+        <dt>Date: ${DateHelper.format(new Date(), 'll LT')}</dt>
+        <dd>${totalPages ? `Page: ${currentPage + 1}/${totalPages}` : ''}</dd>
+    </dl>
+    `;
+const footerTpl = () => `<h3>© ${new Date().getFullYear()} Bryntum AB</h3></div>`;
+
 export const useGanttConfig = () => {
     return {
         enableUndoRedoKeys : true,
@@ -32,7 +47,16 @@ export const useGanttConfig = () => {
         },
         startDate : '',
         endDate   : '',
-        locale: ''
+        locale: '',
+        features: {
+            pdfExport : {
+                exportServer            : 'http://localhost:8080/',
+                // Required for font-awesome icons to display correctly
+                translateURLsToAbsolute : 'http://localhost:8080/resources/',
+                headerTpl,
+                footerTpl
+            }
+        }
     };
 };
 

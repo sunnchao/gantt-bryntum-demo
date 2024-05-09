@@ -41,6 +41,19 @@ export default class GanttToolbar extends Toolbar {
     static get configurable() {
         return {
             items: [
+                // 导出
+                {
+                    type: "buttonGroup",
+                    items: [
+                        {
+                            ref: "exportButton",
+                            icon: "b-fa b-fa-file-export",
+                            text: "Export",
+                            tooltip: "Export to Excel",
+                            onAction: "up.onExportClick"
+                        }
+                    ]
+                },
                 {
                     type: "buttonGroup",
                     items: [
@@ -460,6 +473,11 @@ export default class GanttToolbar extends Toolbar {
         this.gantt.features.criticalPaths.disabled = !source.pressed;
     }
 
+    onExportClick() {
+        const { gantt } = this;
+        console.log('onExportClick', gantt.features)
+        gantt.features.pdfExport.showExportDialog();
+    }
     // endregion
 }
 
