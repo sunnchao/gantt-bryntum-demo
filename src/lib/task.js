@@ -1,4 +1,5 @@
-export const taskList = {
+export const taskList = 
+{
   "id"          : 1000,
   "name"        : "Launch SaaS Product",
   "percentDone" : 50,

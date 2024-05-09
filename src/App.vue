@@ -52,9 +52,9 @@ LocaleHelper.publishLocale({
 LocaleManager.applyLocale('ZhCn')
 const chineseLocale = LocaleHelper.locales.ZhCn;
 onMounted(() => {
-    ganttRef.value.instance.value.project = project.value.instance.value;
-    console.log(ganttRef.value)
     tasks.value = [taskList];
+    ganttRef.value.instance.value.project = project.value.instance.value;
+    console.log(project.value)
     //此下操作位记录 操作记录
     const gantt = ganttRef.value.instance.value
     const treeGrid = treeGridRef.value.instance.value;

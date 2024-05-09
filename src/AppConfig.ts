@@ -1,6 +1,5 @@
 import type { GanttConfig, TreeGridConfig } from '@bryntum/gantt';
 import { DateHelper } from '@bryntum/gantt';
-
 import './lib/GanttToolbar.js';
 import './lib/gantt.locale.ZhCn.js';
 
@@ -21,16 +20,13 @@ export const useGanttConfig = () => {
         enableUndoRedoKeys : true,
         flex               : '1 1 auto',
         dependencyIdField  : 'wbsCode',
-
         project : {
+            autoLoad : true,
             transport : {
                 load : {
                     url : './data/launch-saas.json'
                 }
             },
-
-            autoLoad : true,
-
             // The State TrackingManager which the UndoRedo widget in the toolbar uses
             stm : {
                 autoRecord : true
@@ -40,14 +36,17 @@ export const useGanttConfig = () => {
             // It's meant to be used as a development stage helper only so please set it to false for production systems.
             validateResponse : true
         },
-        columns : [{ type : 'addnew' }],
+        columns : [
+            { type : 'startdate', text : 'Start date' },
+            { type : 'duration', text : 'Duration' },
+            { type : 'addnew' }
+        ],
         tbar : 
         {
             type  : 'gantttoolbar',
         },
-        startDate : '',
-        endDate   : '',
-        locale: '',
+        // startDate : '',
+        // endDate   : '',
         features: {
             pdfExport : {
                 exportServer            : 'http://localhost:8080/',
