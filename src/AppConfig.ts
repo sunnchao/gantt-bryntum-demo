@@ -7,7 +7,7 @@ const headerTpl = ({
     currentPage,
     totalPages
 }) => `
-    <img alt="Company logo" src="./resources/bryntum.svg"/>
+
     <dl>
         <dt>Date: ${DateHelper.format(new Date(), 'll LT')}</dt>
         <dd>${totalPages ? `Page: ${currentPage + 1}/${totalPages}` : ''}</dd>
@@ -17,9 +17,9 @@ const footerTpl = () => `<h3>© ${new Date().getFullYear()} Bryntum AB</h3></div
 
 export const useGanttConfig = () => {
     return {
-        enableUndoRedoKeys : true,
+        // enableUndoRedoKeys : true,
         flex               : '1 1 auto',
-        dependencyIdField  : 'wbsCode',
+        // dependencyIdField  : 'wbsCode',
         project : {
             autoLoad : true,
             transport : {
@@ -37,7 +37,7 @@ export const useGanttConfig = () => {
             validateResponse : true
         },
         columns : [
-            { type : 'startdate', text : 'Start date' },
+            { type : 'startdate', text : '开始时间' },
             { type : 'duration', text : 'Duration' },
             { type : 'addnew' }
         ],

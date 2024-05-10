@@ -21,7 +21,6 @@ export default class GanttToolbar extends Toolbar {
         super.parent = parent;
 
         const me = this;
-        console.log(this)
         me.gantt = parent;
 
         parent.project.on({
@@ -153,7 +152,7 @@ export default class GanttToolbar extends Toolbar {
                                 onBeforeShow: "up.onFeaturesShow",
                                 items: [
                                     {
-                                        text: "Draw dependencies",
+                                        text: "连接线",
                                         feature: "dependencies",
                                         checked: false
                                     },

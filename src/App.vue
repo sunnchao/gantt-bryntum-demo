@@ -1,11 +1,12 @@
 <template>
     <div class="b-widget b-wrapper">
-        <bryntum-gantt-project-model
+        <!-- <bryntum-gantt-project-model
             ref="project"
             v-bind="projectConfig"
             :tasks="tasks"
+            :calendars="calendars"
             :dependencies="dependencies"
-        />
+        /> -->
         <bryntum-gantt
             ref="ganttRef"
             v-bind="ganttConfig"
@@ -20,7 +21,7 @@
 </template>
 
 <script lang="ts" setup name="App">
-import { ref, reactive, onMounted } from 'vue';
+import { ref, reactive, onMounted, nextTick } from 'vue';
 import './lib/gantt.locale.ZhCn.js';
 import {
     BryntumGanttProjectModel,
@@ -31,7 +32,7 @@ import {
 
 import { useGanttConfig, useProjectConfig, treeGridConfiguration } from './AppConfig';
 import { type Store, type Model, type SchedulerEventModel, ProjectModel, StringHelper, LocaleHelper, LocaleManager, TaskModel, DependencyModel } from '@bryntum/gantt';
-import { taskList } from './lib/task.js'
+import { taskList, calendars } from './lib/task.js'
 const ganttRef = ref(null);
 const project = ref(null);
 const treeGridConfig = reactive(treeGridConfiguration)
@@ -40,9 +41,6 @@ const projectConfig = reactive(useProjectConfig());
 const treeGridRef = ref(null);
 const tasks = ref([] as any[]);
 const dependencies = ref(null);
-dependencies.value = [
-    { fromTask : 6, toTask : 3 }
-];
 LocaleHelper.publishLocale({
     localeName: "ZhCn",
     localeDesc: "中文（中国）",
@@ -52,9 +50,8 @@ LocaleHelper.publishLocale({
 LocaleManager.applyLocale('ZhCn')
 const chineseLocale = LocaleHelper.locales.ZhCn;
 onMounted(() => {
-    tasks.value = [taskList];
-    ganttRef.value.instance.value.project = project.value.instance.value;
-    console.log(project.value)
+    // tasks.value = [taskList];
+    // ganttRef.value.instance.value.project = project.value.instance.value;
     //此下操作位记录 操作记录
     const gantt = ganttRef.value.instance.value
     const treeGrid = treeGridRef.value.instance.value;
@@ -173,6 +170,23 @@ onMounted(() => {
         },
         thisObj : treeGrid
     });
+    // nextTick(() => {
+    //     gantt.taskStore.on('change', ({ source, action, record, records, changes }) => { 
+    //         console.log('change', source, action, record, records, changes)
+    //     });
+    //     // setInterval(() => {
+    //         // gantt.taskStore.add(taskList);
+    //         console.log(gantt.taskStore)
+    //     // }, 3000)
+    //     // setInterval(() => {
+    //     //     console.log(JSON.stringify(gantt.project._tasks))
+    //     // }, 1000 *)
+        
+    // })
+
+    // gantt.taskStore.add(taskList);
+    // console.log(gantt.taskStore)
+    
 });
 
 
