@@ -1,5 +1,4 @@
-import type { GanttConfig, TreeGridConfig } from '@bryntum/gantt';
-import { DateHelper } from '@bryntum/gantt';
+import { BaselineStartDateColumn, DateHelper } from '@bryntum/gantt';
 import './lib/GanttToolbar.js';
 import './lib/gantt.locale.ZhCn.js';
 
@@ -39,6 +38,7 @@ export const useGanttConfig = () => {
         columns : [
             { type : 'startdate', text : '开始时间' },
             { type : 'duration', text : 'Duration' },
+            { type : 'enddate', text : '结束时间' },
             { type : 'addnew' }
         ],
         tbar : 
@@ -49,9 +49,9 @@ export const useGanttConfig = () => {
         // endDate   : '',
         features: {
             pdfExport : {
-                exportServer            : 'http://localhost:8080/',
+                exportServer            : 'http://172.16.15.175:8080/',
                 // Required for font-awesome icons to display correctly
-                translateURLsToAbsolute : 'http://localhost:8080/resources/',
+                translateURLsToAbsolute : 'http://172.16.15.175:8080/resources/',
                 headerTpl,
                 footerTpl
             }
@@ -73,7 +73,7 @@ export const treeGridConfiguration = {
     store : {
         tree   : true,
         fields : ['idx', 'title', 'changes'],
-        data   : []
+        data: []
     },
 
     columns : [

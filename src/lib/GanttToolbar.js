@@ -23,11 +23,11 @@ export default class GanttToolbar extends Toolbar {
         const me = this;
         me.gantt = parent;
 
-        parent.project.on({
-            load: "updateStartDateField",
-            refresh: "updateStartDateField",
-            thisObj: me
-        });
+        // parent.project.on({
+        //     load: "updateStartDateField",
+        //     refresh: "updateStartDateField",
+        //     thisObj: me
+        // });
 
         me.styleNode = document.createElement("style");
         document.head.appendChild(me.styleNode);
@@ -263,16 +263,16 @@ export default class GanttToolbar extends Toolbar {
                         }
                     ]
                 },
-                {
-                    type: "datefield",
-                    ref: "startDateField",
-                    label: "项目启动",
-                    // required  : true, (done on load)
-                    flex: "0 0 17em",
-                    listeners: {
-                        change: "up.onStartDateChange"
-                    }
-                },
+                // {
+                //     type: "datefield",
+                //     ref: "startDateField",
+                //     label: "项目启动",
+                //     // required  : true, (done on load)
+                //     flex: "0 0 17em",
+                //     listeners: {
+                //         change: "up.onStartDateChange"
+                //     }
+                // },
                 {
                     type: "textfield",
                     ref: "filterByName",
@@ -310,16 +310,16 @@ export default class GanttToolbar extends Toolbar {
         }
     }
 
-    updateStartDateField() {
-        const { startDateField } = this.widgetMap;
+    // updateStartDateField() {
+    //     const { startDateField } = this.widgetMap;
 
-        startDateField.value = this.gantt.project.startDate;
+    //     startDateField.value = this.gantt.project.startDate;
 
-        // This handler is called on project.load/propagationComplete, so now we have the
-        // initial start date. Prior to this time, the empty (default) value would be
-        // flagged as invalid.
-        startDateField.required = true;
-    }
+    //     // This handler is called on project.load/propagationComplete, so now we have the
+    //     // initial start date. Prior to this time, the empty (default) value would be
+    //     // flagged as invalid.
+    //     startDateField.required = true;
+    // }
 
     // region controller methods
 
@@ -383,16 +383,16 @@ export default class GanttToolbar extends Toolbar {
         this.gantt.shiftNext();
     }
 
-    onStartDateChange({ value, userAction }) {
-        // Scroll to date only when user changes the date, not for the initial set
-        if (value && userAction) {
-            this.gantt.scrollToDate(DateHelper.add(value, -1, 'week'), {
-                block : 'start'
-            });
+    // onStartDateChange({ value, userAction }) {
+    //     // Scroll to date only when user changes the date, not for the initial set
+    //     if (value && userAction) {
+    //         this.gantt.scrollToDate(DateHelper.add(value, -1, 'week'), {
+    //             block : 'start'
+    //         });
 
-            this.gantt.project.setStartDate(value);
-        }
-    }
+    //         this.gantt.project.setStartDate(value);
+    //     }
+    // }
 
     onFilterChange({ value }) {
         if (value === "") {

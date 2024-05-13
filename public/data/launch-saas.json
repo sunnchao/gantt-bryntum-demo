@@ -63,7 +63,7 @@
         "expanded" : true,
         "children" : [
             { "id" : 6, "name" : "项目搭建", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-12", "children": [
-              { "id" : 61, "name" : "需求分析", "startDate" : "2024-05-08", "endDate" : "2024-05-10" },
+              { "id" : 61, "name" : "需求分析", "startDate" : "2024-05-08", "endDate" : "2024-05-10", "percentDone": 50 },
               { "id" : 62, "name" : "详设", "startDate" : "2024-05-10", "endDate" : "2024-05-12" }
             ] },
             { "id" : 3, "name" : "页面开发", "startDate" : "2024-05-14", "endDate" : "2024-05-19" },
@@ -77,7 +77,7 @@
         "children" : [
             { "id" : 7, "name" : "数据库设计", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-14", "children": [
               { "id" : 71, "name" : "数据库分析", "startDate" : "2024-05-08", "endDate" : "2024-05-11" },
-              { "id" : 72, "name" : "表结构设计", "startDate" : "2024-05-11", "endDate" : "2024-05-14" }
+              { "id" : 72, "name" : "表结构设计", "duration": 3 }
             ] },
             { "id" : 8, "name" : "接口开发", "startDate" : "2024-05-14", "endDate" : "2024-05-20" },
             { "id" : 5, "name" : "接口联调", "duration": 7 }
@@ -88,27 +88,15 @@
 
   "dependencies" : {
     "rows" : [
-      { "id": 1, "fromTask" : 6, "toTask" : 3},
-      { "id": 3, "fromTask" : 61, "toTask" : 62},
-      { "id": 2, "fromTask" : 3, "toTask" : 9, "lag" : 2  },
-      { "id": 4, "fromTask" : 71, "toTask" : 72},
-      { "id": 5, "fromTask" : 7, "toTask" : 8},
-      { "id": 6, "fromTask" : 8, "toTask" : 5}
+      { "id": 1, "fromTask" : 3, "toTask" : 8 },
+      { "id": 2, "fromTask" : 71, "toTask" : 72 }
     ]
   },
-
   "resources" : {
     "rows" : [
-      { "id" : 1, "name" : "Celia", "city" : "Barcelona", "calendar" : null, "image" : "celia.jpg" },
-      { "id" : 2, "name" : "Lee", "city" : "London", "calendar" : null, "image" : "lee.jpg"  },
-      { "id" : 3, "name" : "Macy", "city" : "New York", "calendar" : null, "image" : "macy.jpg"  },
-      { "id" : 4, "name" : "Madison", "city" : "Barcelona", "calendar" : null, "image" : "madison.jpg"  },
-      { "id" : 5, "name" : "Rob", "city" : "Rome", "calendar" : "business", "image" : "rob.jpg"  },
-      { "id" : 6, "name" : "Dave", "city" : "Barcelona", "calendar" : "night", "image" : "dave.jpg"  },
-      { "id" : 7, "name" : "Dan", "city" : "London", "calendar" : "night", "image" : "dan.jpg"  },
-      { "id" : 8, "name" : "George", "city" : "New York", "calendar" : null, "image" : "george.jpg"  },
-      { "id" : 9, "name" : "Gloria", "city" : "Rome", "calendar" : null, "image" : "gloria.jpg"  },
-      { "id" : 10, "name" : "Henrik", "city" : "London", "calendar" : null, "image" : "henrik.jpg"  }
+      { "id" : 1, "name" : "李德华", "city" : "北京", "calendar" : null, "image" : "celia.jpg" },
+      { "id" : 2, "name" : "孙朝旺", "city" : "北京", "calendar" : null, "image" : "celia.jpg" },
+      { "id" : 3 , "name" : "王鹏宇", "city" : "北京", "calendar" : null, "image" : "celia.jpg" }
     ]
   },
 
@@ -136,7 +124,7 @@
         "name"         : "Important date",
         "startDate"    : "2024-05-08",
         "duration"     : 0,
-        "durationUnit" : "d",
+        "durationUnit" : "h",
         "cls"          : "b-fa b-fa-diamond"
       }
     ]

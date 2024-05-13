@@ -4,7 +4,6 @@
             ref="project"
             v-bind="projectConfig"
             :tasks="tasks"
-            :calendars="calendars"
             :dependencies="dependencies"
         /> -->
         <bryntum-gantt
@@ -29,10 +28,9 @@ import {
     BryntumTreeGrid,
     BryntumSplitter
 } from '@bryntum/gantt-vue-3';
-
-import { useGanttConfig, useProjectConfig, treeGridConfiguration } from './AppConfig';
+// import { taskList } from './lib/task.js'
+import { useGanttConfig, useProjectConfig, treeGridConfiguration } from './AppConfig.js';
 import { type Store, type Model, type SchedulerEventModel, ProjectModel, StringHelper, LocaleHelper, LocaleManager, TaskModel, DependencyModel } from '@bryntum/gantt';
-import { taskList, calendars } from './lib/task.js'
 const ganttRef = ref(null);
 const project = ref(null);
 const treeGridConfig = reactive(treeGridConfiguration)
@@ -170,30 +168,17 @@ onMounted(() => {
         },
         thisObj : treeGrid
     });
-    // nextTick(() => {
-    //     gantt.taskStore.on('change', ({ source, action, record, records, changes }) => { 
-    //         console.log('change', source, action, record, records, changes)
-    //     });
-    //     // setInterval(() => {
-    //         // gantt.taskStore.add(taskList);
-    //         console.log(gantt.taskStore)
-    //     // }, 3000)
-    //     // setInterval(() => {
-    //     //     console.log(JSON.stringify(gantt.project._tasks))
-    //     // }, 1000 *)
-        
-    // })
-
-    // gantt.taskStore.add(taskList);
-    // console.log(gantt.taskStore)
-    
 });
-
-
 </script>
 
 <style lang="scss">
 @import './App.scss';
+
+/* 隐藏项目起止线 */
+.b-scheduler .b-gantt-dependency-line,
+.b-scheduler .b-gantt-milestone-line {
+    display: none !important;
+}
 </style>
 
 
