@@ -12,7 +12,7 @@ const config = {
     "maximum"       : null,
 
     // Path to static resources to be served. See readme.md for details
-    "resources"     : null,
+    "resources"     : '/resources',
 
     // True to pass `--no-sandbox` flag to the chromium
     "no-sandbox"    : true,

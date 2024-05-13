@@ -43,16 +43,20 @@ module.exports = class WebServer extends ExportServer {
             console.log(`Access-Control-Allow-Origin: ${options.cors}`);
 
             app.use((req, res, next) => {
-                res.header('Access-Control-Allow-Origin', options.cors);
-                res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+                const allowedOrigins = ['http://localhost:5173']; // 允许的来源列表
+                const origin = req.headers.origin;
+                if (allowedOrigins.includes(origin)) {
+                    res.setHeader('Access-Control-Allow-Origin', origin);
+                    res.setHeader('Access-Control-Allow-Credentials', 'true');
+                }
                 next();
             });
         }
-
         //Set target to load resources from
         if (options.resources) {
+            console.log('Resources path: ', path.join(process.cwd(), options.resources))
             // app.use('/resources', express.static(options.resources));
-            app.use('/resources', serveStatic(options.resources));
+            app.use("/resources", serveStatic(path.join(process.cwd(), options.resources)));
         }
 
         //Get the file, fileKey will be a guid. This serves the pdf

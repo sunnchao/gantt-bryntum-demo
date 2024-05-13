@@ -1,5 +1,4 @@
-import type { GanttConfig, TreeGridConfig } from '@bryntum/gantt';
-import { DateHelper } from '@bryntum/gantt';
+import {AjaxStore, DateHelper} from '@bryntum/gantt';
 import './lib/GanttToolbar.js';
 import './lib/gantt.locale.ZhCn.js';
 
@@ -36,11 +35,33 @@ export const useGanttConfig = () => {
             // It's meant to be used as a development stage helper only so please set it to false for production systems.
             validateResponse : true
         },
-        columns : [
-            { type : 'startdate', text : '开始时间' },
-            { type : 'duration', text : 'Duration' },
-            { type : 'addnew' }
-        ],
+        columns : {
+            autoAddField : true,
+            // baselineDurationColumn: {
+            //     hideable : false
+            // },
+            data: [
+                {
+                    type: 'name', text: '任务名称', field: 'name', width: 250,
+                    filterable: {
+                        filterField : {
+                            type  : 'combo',
+                            field: 'name',
+                            store : new AjaxStore({
+                                readUrl  : 'http://localhost:8080/resources/demo.json',
+                                autoLoad : true,
+                            }),
+                            valueField   : 'name',
+                            displayField : 'name',
+                            multiSelect  : true
+                        },
+                    }
+                },
+                { type : 'startdate', text : '开始时间' },
+                { type : 'duration', text : 'Duration' },
+                { type : 'addnew' }
+            ],
+        },
         tbar : 
         {
             type  : 'gantttoolbar',
@@ -48,6 +69,9 @@ export const useGanttConfig = () => {
         // startDate : '',
         // endDate   : '',
         features: {
+            filter : {
+                prioritizeColumns : true
+            },
             pdfExport : {
                 exportServer            : 'http://localhost:8080/',
                 // Required for font-awesome icons to display correctly
