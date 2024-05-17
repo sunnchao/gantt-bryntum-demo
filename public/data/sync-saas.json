@@ -1,0 +1,132 @@
+{
+  "success" : true,
+
+  "project" : {
+    "calendar"     : "general",
+    "startDate"    : "2024-05-08",
+    "hoursPerDay"  : 24,
+    "daysPerWeek"  : 5,
+    "daysPerMonth" : 20
+  },
+
+  "calendars" : {
+    "rows" : [
+      {
+        "id"        : "general",
+        "name"      : "General",
+        "intervals" : [
+          {
+            "recurrentStartDate" : "on Sat at 0:00",
+            "recurrentEndDate"   : "on Mon at 0:00",
+            "isWorking"          : false
+          }
+        ],
+        "expanded" : true,
+        "children" : [
+          {
+            "id"        : "business",
+            "name"      : "Business",
+            "intervals" : [
+              {
+                "recurrentStartDate" : "every weekday at 12:00",
+                "recurrentEndDate"   : "every weekday at 13:00",
+                "isWorking"          : false
+              },
+              {
+                "recurrentStartDate" : "every weekday at 17:00",
+                "recurrentEndDate"   : "every weekday at 08:00",
+                "isWorking"          : false
+              }
+            ]
+          },
+          {
+            "id"        : "night",
+            "name"      : "Night shift",
+            "intervals" : [
+              {
+                "recurrentStartDate" : "every weekday at 6:00",
+                "recurrentEndDate"   : "every weekday at 22:00",
+                "isWorking"          : false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  "tasks" : {
+    "rows" : [
+      {
+        "id"       : 1,
+        "name"     : "前端开发任务",
+        "expanded" : true,
+        "children" : [
+            { "id" : 6, "name" : "项目搭建", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-12", "children": [
+              { "id" : 61, "name" : "需求分析", "startDate" : "2024-05-08", "endDate" : "2024-05-10", "percentDone": 50 },
+              { "id" : 62, "name" : "详设", "startDate" : "2024-05-10", "endDate" : "2024-05-12" }
+            ] },
+            { "id" : 3, "name" : "页面开发", "startDate" : "2024-05-14", "endDate" : "2024-05-19" },
+            { "id" : 9, "name" : "接口联调", "duration": 7 }
+        ]
+      },
+      {
+        "id"       : 2,
+        "name"     : "后端开发任务",
+        "expanded" : true,
+        "children" : [
+            { "id" : 7, "name" : "数据库设计", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-14", "children": [
+              { "id" : 71, "name" : "数据库分析", "startDate" : "2024-05-08", "endDate" : "2024-05-11" },
+              { "id" : 72, "name" : "表结构设计", "duration": 3 }
+            ] },
+            { "id" : 8, "name" : "接口开发", "startDate" : "2024-05-14", "endDate" : "2024-05-20" },
+            { "id" : 5, "name" : "接口联调", "duration": 7 }
+        ]
+      }
+    ]
+  },
+
+  "dependencies" : {
+    "rows" : [
+      { "id": 1, "fromTask" : 3, "toTask" : 8 },
+      { "id": 2, "fromTask" : 71, "toTask" : 72 }
+    ]
+  },
+  "resources" : {
+    "rows" : [
+      { "id" : 1, "name" : "李德华", "city" : "北京", "calendar" : null, "image" : "celia.jpg" },
+      { "id" : 2, "name" : "孙朝旺", "city" : "北京", "calendar" : null, "image" : "celia.jpg" },
+      { "id" : 3 , "name" : "王鹏宇", "city" : "北京", "calendar" : null, "image" : "celia.jpg" }
+    ]
+  },
+
+  "assignments" : {
+    "rows" : [
+      { "id" : 1, "event" : 11,  "resource" : 1 },
+      { "id" : 2, "event" : 4033,  "resource" : 1 },
+      { "id" : 3, "event" : 12,  "resource" : 9 },
+      { "id" : 4, "event" : 13,  "resource" : 2 },
+      { "id" : 5, "event" : 13,  "resource" : 3 },
+      { "id" : 6, "event" : 13,  "resource" : 6 },
+      { "id" : 7, "event" : 13,  "resource" : 7 },
+      { "id" : 8, "event" : 13,  "resource" : 8 },
+      { "id" : 9, "event" : 21,  "resource" : 5 },
+      { "id" : 10, "event" : 21,  "resource" : 9 },
+      { "id" : 11, "event" : 22,  "resource" : 8 },
+      { "id" : 12, "event" : 25,  "resource" : 3 }
+    ]
+  },
+
+  "timeRanges" : {
+    "rows" : [
+      {
+        "id"           : 1,
+        "name"         : "Important date",
+        "startDate"    : "2024-05-08",
+        "duration"     : 0,
+        "durationUnit" : "h",
+        "cls"          : "b-fa b-fa-diamond"
+      }
+    ]
+  }
+}

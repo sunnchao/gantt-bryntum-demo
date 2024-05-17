@@ -1,4 +1,4 @@
-import {AjaxStore, DateHelper} from '@bryntum/gantt';
+import {AjaxStore, DateHelper, ColumnStore, Column} from '@bryntum/gantt';
 import './lib/GanttToolbar.js';
 import './lib/gantt.locale.ZhCn.js';
 
@@ -14,15 +14,37 @@ const headerTpl = ({
     `;
 const footerTpl = () => `<h3>© ${new Date().getFullYear()} Bryntum AB</h3></div>`;
 
+class CustomColumn extends Column {
+    static get type() {
+        return 'customcolumn';
+    }
+
+    static isGanttColumn = true;
+
+    static get defaults() {
+        return {
+            text : 'Custom Column',
+            field: 'customColumn',
+            renderer: (v) => {
+                return v.value ? v.value + 'H' : '';
+            }
+        };
+    }
+}
+ColumnStore.registerColumnType(CustomColumn, true);
+
 export const useGanttConfig = () => {
     return {
         flex               : '1 1 auto',
         project : {
             autoLoad: true,
             transport : {
-                load : {
-                    url : './data/launch-saas.json'
-                }
+                // load : {
+                //     url : './data/launch-saas.json'
+                // },
+                // sync : {
+                //     url : './data/sync-saas.json'
+                // }
             },
             stm : {
                 autoRecord : true
@@ -42,7 +64,7 @@ export const useGanttConfig = () => {
                             type  : 'combo',
                             field: 'name',
                             store : new AjaxStore({
-                                readUrl  : 'http://172.16.15.175:5173/resources/demo.json',
+                                readUrl  : 'http://localhost:8080/resources/demo.json',
                                 autoLoad : true,
                             }),
                             valueField   : 'name',
@@ -54,6 +76,7 @@ export const useGanttConfig = () => {
                 { type : 'startdate', text : '开始时间', format: 'YYYY-MM-DD' },
                 { type : 'duration', text : 'Duration', },
                 { type : 'enddate', text : '结束时间', format: 'YYYY-MM-DD'  },
+                { type : 'customcolumn', text : '所需工时' },
                 { type : 'addnew' }
             ],
         },
@@ -73,9 +96,9 @@ export const useGanttConfig = () => {
             //     // align    : 'l-r' // Align left to right
             // },
             pdfExport : {
-                exportServer: 'http://172.16.15.175:8080/',
+                exportServer            : 'http://localhost:8080/',
                 // Required for font-awesome icons to display correctly
-                translateURLsToAbsolute : 'http://172.16.15.175:8080/resources/',
+                translateURLsToAbsolute : 'http://localhost:8080/resources/',
                 headerTpl,
                 footerTpl
             }
@@ -93,7 +116,7 @@ export const useProjectConfig = () => {
         stm: {
             autoRecord : true
         }
-        
+
     };
 };
 
