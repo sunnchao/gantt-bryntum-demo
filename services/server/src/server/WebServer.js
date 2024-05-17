@@ -43,7 +43,7 @@ module.exports = class WebServer extends ExportServer {
             console.log(`Access-Control-Allow-Origin: ${options.cors}`);
 
             app.use((req, res, next) => {
-                const allowedOrigins = ['http://localhost:5173']; // 允许的来源列表
+                const allowedOrigins = ['http://172.16.15.175:5173']; // 允许的来源列表
                 const origin = req.headers.origin;
                 if (allowedOrigins.includes(origin)) {
                     res.setHeader('Access-Control-Allow-Origin', origin);

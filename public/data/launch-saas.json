@@ -2,7 +2,7 @@
   "success" : true,
 
   "project" : {
-    "calendar"     : "general",
+    "calendar"     : "1",
     "startDate"    : "2024-05-08",
     "hoursPerDay"  : 24,
     "daysPerWeek"  : 5,
@@ -12,7 +12,7 @@
   "calendars" : {
     "rows" : [
       {
-        "id"        : "general",
+        "id"        : "1",
         "name"      : "General",
         "intervals" : [
           {
@@ -33,19 +33,8 @@
                 "isWorking"          : false
               },
               {
-                "recurrentStartDate" : "every weekday at 17:00",
-                "recurrentEndDate"   : "every weekday at 08:00",
-                "isWorking"          : false
-              }
-            ]
-          },
-          {
-            "id"        : "night",
-            "name"      : "Night shift",
-            "intervals" : [
-              {
-                "recurrentStartDate" : "every weekday at 6:00",
-                "recurrentEndDate"   : "every weekday at 22:00",
+                "recurrentStartDate" : "every weekday at 18:00",
+                "recurrentEndDate"   : "every weekday at 09:00",
                 "isWorking"          : false
               }
             ]
@@ -60,14 +49,17 @@
       {
         "id"       : 1,
         "name"     : "前端开发任务",
+        "startDate" : "",
+        "endDate" : "",
         "expanded" : true,
+        "format": "YYYY-MM-DD",
         "children" : [
-            { "id" : 6, "name" : "项目搭建", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-12", "children": [
-              { "id" : 61, "name" : "需求分析", "startDate" : "2024-05-08", "endDate" : "2024-05-10", "percentDone": 50 },
-              { "id" : 62, "name" : "详设", "startDate" : "2024-05-10", "endDate" : "2024-05-12" }
+            { "id" : 6, "name" : "项目搭建", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-12", "durationUnit": "hour", "format": "YYYY-MM-DD", "children": [
+              { "id" : 61, "name" : "需求分析", "startDate" : "2024-05-08 09:00:00", "endDate" : "2024-05-10 17:00:00", "percentDone": 50, "durationUnit": "hour" },
+              { "id" : 62, "name" : "详设", "startDate" : "2024-05-10", "endDate" : "2024-05-12", "durationUnit": "hour", "hideAble": true }
             ] },
-            { "id" : 3, "name" : "页面开发", "startDate" : "2024-05-14", "endDate" : "2024-05-19" },
-            { "id" : 9, "name" : "接口联调", "duration": 7 }
+            { "id" : 3, "name" : "页面开发", "startDate" : "2024-05-14", "endDate" : "2024-05-19", "durationUnit": "hour" },
+            { "id" : 9, "name" : "接口联调", "duration": 7, "durationUnit": "hour" }
         ]
       },
       {
@@ -75,12 +67,12 @@
         "name"     : "后端开发任务",
         "expanded" : true,
         "children" : [
-            { "id" : 7, "name" : "数据库设计", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-14", "children": [
-              { "id" : 71, "name" : "数据库分析", "startDate" : "2024-05-08", "endDate" : "2024-05-11" },
-              { "id" : 72, "name" : "表结构设计", "duration": 3 }
+            { "id" : 7, "name" : "数据库设计", "expanded" : true, "startDate" : "2024-05-08", "endDate" : "2024-05-14", "durationUnit": "hour", "children": [
+              { "id" : 71, "name" : "数据库分析", "startDate" : "2024-05-08", "endDate" : "2024-05-11", "durationUnit": "hour" },
+              { "id" : 72, "name" : "表结构设计", "duration": 3, "durationUnit": "hour" }
             ] },
-            { "id" : 8, "name" : "接口开发", "startDate" : "2024-05-14", "endDate" : "2024-05-20" },
-            { "id" : 5, "name" : "接口联调", "duration": 7 }
+            { "id" : 8, "name" : "接口开发", "startDate" : "2024-05-14", "endDate" : "2024-05-20", "durationUnit": "hour" },
+            { "id" : 5, "name" : "接口联调", "duration": 7, "durationUnit": "hour" }
         ]
       }
     ]
@@ -102,18 +94,6 @@
 
   "assignments" : {
     "rows" : [
-      { "id" : 1, "event" : 11,  "resource" : 1 },
-      { "id" : 2, "event" : 4033,  "resource" : 1 },
-      { "id" : 3, "event" : 12,  "resource" : 9 },
-      { "id" : 4, "event" : 13,  "resource" : 2 },
-      { "id" : 5, "event" : 13,  "resource" : 3 },
-      { "id" : 6, "event" : 13,  "resource" : 6 },
-      { "id" : 7, "event" : 13,  "resource" : 7 },
-      { "id" : 8, "event" : 13,  "resource" : 8 },
-      { "id" : 9, "event" : 21,  "resource" : 5 },
-      { "id" : 10, "event" : 21,  "resource" : 9 },
-      { "id" : 11, "event" : 22,  "resource" : 8 },
-      { "id" : 12, "event" : 25,  "resource" : 3 }
     ]
   },
 

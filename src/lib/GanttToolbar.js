@@ -277,7 +277,7 @@ export default class GanttToolbar extends Toolbar {
                     type: "textfield",
                     ref: "filterByName",
                     cls: "filter-by-name",
-                    flex: "0 0 12.5em",
+                    flex: "0 0 19em",
                     // Label used for material, hidden in other themes
                     label: "按名称查找任务",
                     // Placeholder for others
@@ -291,7 +291,18 @@ export default class GanttToolbar extends Toolbar {
                         }
                     },
                     onChange: "up.onFilterChange"
-                }
+                },
+                {
+                    type: "buttonGroup",
+                    items: [
+                        {
+                            ref: "saveButton",
+                            text: '保存',
+                            tooltip: "保存当前甘特图",
+                            onAction: "up.onSaveClick"
+                        }
+                    ]
+                },
             ]
         };
     }
@@ -476,6 +487,12 @@ export default class GanttToolbar extends Toolbar {
         const { gantt } = this;
         console.log('onExportClick', gantt.features)
         gantt.features.pdfExport.showExportDialog();
+    }
+    onSaveClick() {
+        const { gantt } = this;
+        console.log('update', gantt.project.taskStore.allRecords)
+        console.log('update', gantt.project.dependencyStore.allRecords)
+        
     }
     // endregion
 }

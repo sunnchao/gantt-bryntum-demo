@@ -16,23 +16,17 @@ const footerTpl = () => `<h3>© ${new Date().getFullYear()} Bryntum AB</h3></div
 
 export const useGanttConfig = () => {
     return {
-        // enableUndoRedoKeys : true,
         flex               : '1 1 auto',
-        // dependencyIdField  : 'wbsCode',
         project : {
-            autoLoad : true,
+            autoLoad: true,
             transport : {
                 load : {
                     url : './data/launch-saas.json'
                 }
             },
-            // The State TrackingManager which the UndoRedo widget in the toolbar uses
             stm : {
                 autoRecord : true
             },
-
-            // This config enables response validation and dumping of found errors to the browser console.
-            // It's meant to be used as a development stage helper only so please set it to false for production systems.
             validateResponse : true
         },
         columns : {
@@ -48,7 +42,7 @@ export const useGanttConfig = () => {
                             type  : 'combo',
                             field: 'name',
                             store : new AjaxStore({
-                                readUrl  : 'http://localhost:8080/resources/demo.json',
+                                readUrl  : 'http://172.16.15.175:5173/resources/demo.json',
                                 autoLoad : true,
                             }),
                             valueField   : 'name',
@@ -57,8 +51,9 @@ export const useGanttConfig = () => {
                         },
                     }
                 },
-                { type : 'startdate', text : '开始时间' },
-                { type : 'duration', text : 'Duration' },
+                { type : 'startdate', text : '开始时间', format: 'YYYY-MM-DD' },
+                { type : 'duration', text : 'Duration', },
+                { type : 'enddate', text : '结束时间', format: 'YYYY-MM-DD'  },
                 { type : 'addnew' }
             ],
         },
@@ -72,8 +67,13 @@ export const useGanttConfig = () => {
             filter : {
                 prioritizeColumns : true
             },
+            // taskTooltip : {
+            //     template : (data) => `Tooltip for ${data}`,
+            //     // // Tooltip configs can be used here
+            //     // align    : 'l-r' // Align left to right
+            // },
             pdfExport : {
-                exportServer            : 'http://172.16.15.175:8080/',
+                exportServer: 'http://172.16.15.175:8080/',
                 // Required for font-awesome icons to display correctly
                 translateURLsToAbsolute : 'http://172.16.15.175:8080/resources/',
                 headerTpl,
@@ -86,6 +86,14 @@ export const useGanttConfig = () => {
 export const useProjectConfig = () => {
     return {
         startDate : '',
+        calendar: "1",
+        hoursPerDay: 24,
+        daysPerWeek: 5,
+        daysPerMonth: 20,
+        stm: {
+            autoRecord : true
+        }
+        
     };
 };
 
